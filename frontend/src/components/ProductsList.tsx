@@ -13,8 +13,10 @@ export default function ProductsList() {
         fetchedProducts.forEach((product) => {
           product.image =
             product.image.slice(0, -3) + Math.floor(Math.random() * 900);
+          product.reviews.forEach((review) => {
+            review.createdAt = new Date(review.createdAt);
+          });
         });
-
         setProducts(fetchedProducts);
       })
       .catch((error) => {
