@@ -11,7 +11,7 @@ React 18+, TypeScript, ESLint, Prettier, Material-UI (Rating component), Vite (o
 ---
 
 ## Setup
-Clone the repository, install dependencies with `npm install`, and run the application locally using `npm run dev` (or `npm start` if using Create React App). Open the application in your browser at `http://localhost:5173` (port may vary depending on your setup).
+Clone the repository, you can find backend code [here](https://github.com/tonymihut/rw-api),  install dependencies with `npm install`, and run the application locally using `npm run dev` (or `npm start` if using Create React App). Open the application in your browser at `http://localhost:5173` (port may vary depending on your setup).
 
 ---
 
