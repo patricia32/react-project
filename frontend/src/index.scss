@@ -22,7 +22,7 @@ body {
 }
 
 body::before {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0; // use the entire dimensions
   background-image: url('/background.jpg');
@@ -32,18 +32,17 @@ body::before {
   z-index: -1;
 }
 
-  // Main
-.main{
-
+// Main
+.main {
   width: 80%;
   max-width: 1100px;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.15);
   padding: 1cqh 4cqw;
-}   
+}
 
-  /* Products */
-.products__list{
+/* Products */
+.products__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
@@ -69,48 +68,48 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-family: "Playfair Display", sans-serif;
+    font-family: 'Playfair Display', sans-serif;
     padding: 1.5rem;
     gap: 0.8rem;
 
-    &-name{
+    &-name {
       font-size: 2.3rem;
       text-align: left;
-      font-family: "Bebas Neue", sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
     }
 
-    &-reviews{
+    &-reviews {
       font-size: 0.9rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
 
-    &-rating{
+    &-rating {
       transform: translate(-16px) scale(0.75);
-      .MuiRating-iconEmpty{
+      .MuiRating-iconEmpty {
         color: rgba(255, 255, 255, 0.5);
       }
     }
   }
   transition: all 0.3s ease-in-out;
-  &:hover{
+  &:hover {
     transform: scale(1.1);
   }
 }
 
-@media(max-width: 1000px){
-  .products__list{
+@media (max-width: 1000px) {
+  .products__list {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media(max-width: 810px){
-  .products__list{
+@media (max-width: 810px) {
+  .products__list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media(max-width: 580px){
-  .products__list{
+@media (max-width: 580px) {
+  .products__list {
     grid-template-columns: 0.9fr;
   }
 }

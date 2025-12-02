@@ -1,9 +1,9 @@
-import type { Review } from "./Review"
+import type { Review } from './Review';
 
-export type Product ={
-    id: string,
-    name: string,
-    description: string,
-    image: string,
-    reviews: Review[]
-}
+export type Product = {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  reviews: Review[];
+};

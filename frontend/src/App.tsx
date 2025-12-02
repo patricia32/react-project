@@ -1,14 +1,12 @@
-import './App.css'
-import ProductsList from './components/ProductsList'
-
+import './App.css';
+import ProductsList from './components/ProductsList';
 
 function App() {
-
   return (
-    <div className='main'>
-        <ProductsList/>
+    <div className="main">
+      <ProductsList />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
