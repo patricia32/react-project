@@ -7,6 +7,7 @@ export default function MainPage() {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchInput(e.target.value);
   }
+
   return (
     <div>
       <SearchBar searchInput={searchInput} handleChange={handleChange} />

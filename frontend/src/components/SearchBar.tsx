@@ -1,8 +1,10 @@
 import SearchIcon from '@mui/icons-material/Search';
+
 interface Props {
   searchInput: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
 export default function SearchBar({ searchInput, handleChange }: Props) {
   return (
     <div className="search">
