@@ -19,7 +19,8 @@ export default function ProductsList({ searchInput }: Props) {
       .then((fetchedProducts) => {
         fetchedProducts.forEach((product) => {
           product.image =
-            product.image.slice(0, -3) + Math.floor(Math.random() * 900);
+            product.image.slice(0, -3) +
+            (Math.floor(Math.random() * 900) + 100);
           product.reviews.forEach((review) => {
             review.createdAt = new Date(review.createdAt);
           });
@@ -43,16 +44,18 @@ export default function ProductsList({ searchInput }: Props) {
 
   if (isLoading) return <Loading />;
   return (
-    <div className="body">
-      {filteredProducts.length > 0 ? (
-        <div className="body__products">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      ) : (
-        <NoItemsFound searchInput={searchInput} />
-      )}
+    <div className="container">
+      <div className="body">
+        {filteredProducts.length > 0 ? (
+          <div className="body__products">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        ) : (
+          <NoItemsFound searchInput={searchInput} />
+        )}
+      </div>
     </div>
   );
 }

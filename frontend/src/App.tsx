@@ -1,11 +1,14 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import MainPage from './pages/MainPage';
+import ProductPage from './pages/ProductPage';
 
 function App() {
   return (
-    <div className="main">
-      <MainPage />
-    </div>
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/product/:productId/:imgCode" element={<ProductPage />} />
+    </Routes>
   );
 }
 
