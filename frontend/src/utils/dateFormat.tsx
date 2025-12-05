@@ -1,5 +1,5 @@
 export default function dateFormat(date: Date): string {
-  date.setHours(date.getHours() - 2);
+  date.setHours(date.getHours());
   const now = new Date();
   const diff: number = now.getTime() - date.getTime();
 

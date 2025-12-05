@@ -6,10 +6,12 @@ import type { Product } from '../types/Product';
 import Loading from '../components/Loading';
 import ReviewsList from '../components/ReviewsList';
 import ReviewForm from '../components/ReviewForm';
+import type { Review } from '../types/Review';
 
 export default function ProductPage() {
   const { productId, imgCode } = useParams();
-  const [product, setProduct] = useState({} as Product);
+  const [product, setProduct] = useState<Product>({} as Product);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -20,7 +22,9 @@ export default function ProductPage() {
           productData.reviews.forEach((review) => {
             review.createdAt = new Date(review.createdAt);
           });
+
           setProduct(productData);
+          setReviews(productData.reviews || []);
         })
         .catch((err) => {
           console.error(err);
@@ -47,8 +51,14 @@ export default function ProductPage() {
       </div>
       <div className="productPage__reviews">
         <div className="productPage__reviews__readWrite">
-          <ReviewsList reviews={product.reviews} />
-          <ReviewForm />
+          <ReviewsList reviews={reviews} />
+          <ReviewForm
+            productId={productId}
+            onReviewSubmit={(newReview) => {
+              newReview.createdAt = new Date(newReview.createdAt);
+              setReviews((prev) => [newReview, ...prev]);
+            }}
+          />
         </div>
       </div>
     </div>
