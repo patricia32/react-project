@@ -1,8 +1,6 @@
 :root {
-  font-family: 'Playfair Display', sans-serif;
   line-height: 1;
   font-weight: 400;
-  padding: 0;
   color-scheme: light dark;
 
   overflow-x: hidden;
@@ -12,18 +10,23 @@
   -moz-osx-font-smoothing: grayscale;
 
   --primary-color: rgb(207, 187, 153);
+  --secondary-color: rgb(118, 90, 21);
+  --stars-color: rgb(243, 177, 36);
+
   --black-color--background: rgb(0, 0, 0, 0.5);
 
   --text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+
+  --font-family-basic: 'Arima', sans-serif;
+  --font-family-title: 'Bebas Neue', sans-serif;
 }
 
 body {
-  font-family: 'Playfair Display', sans-serif;
+  font-family: var(--font-family-basic);
   text-shadow: var(--text-shadow);
   color: var(--primary-color);
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
@@ -42,18 +45,35 @@ body::before {
 
 // Main
 .main {
-  width: 90vw;
-  max-width: 1100px;
-  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin-bottom: 2rem;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 8rem;
+  margin: 0 2rem;
+  width: 75vw;
 }
 
 .body {
   background-color: var(--black-color--background);
   border-radius: 40px;
-  margin: 8rem auto;
   padding: 2rem;
+  width: 100%;
+  min-height: 35vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* Products */
@@ -68,27 +88,25 @@ body::before {
 .product {
   height: 25rem;
   background-size: cover;
-  background-position: center;
+  background-position: fixed;
   background-repeat: no-repeat;
   border-radius: 15px;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
 
   &__details {
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-family: 'Playfair Display', sans-serif;
     padding: 1.5rem;
     gap: 0.8rem;
 
     &-name {
-      font-family: 'Playfair Display', sans-serif;
-      font-size: 1.9rem;
+      font-family: var(--font-family-title);
+      font-size: 2.2rem;
       text-align: left;
     }
 
@@ -162,31 +180,243 @@ body::before {
     border: none;
     outline: none;
     padding: 0 1rem;
-    margin-bottom: 7px;
     background: transparent;
 
     text-shadow: var(--text-shadow);
-    font-family: 'Playfair Display', sans-serif;
+    font-family: var(--font-family-basic);
     color: var(--primary-color);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 
     &::placeholder {
       color: var(--primary-color);
     }
   }
 }
+
+.productPage {
+  max-width: 1100px;
+  width: 90vw;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+
+  box-shadow: 30px 30px 30px 50px rgba(0, 0, 0, 1);
+
+  &__present {
+    width: 100%;
+    height: 60vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    box-sizing: border-box;
+    padding: 3rem;
+
+    &-name {
+      font-family: var(--font-family-title);
+      font-size: 5rem;
+    }
+  }
+
+  &__reviews {
+    box-sizing: border-box;
+    padding: 2rem;
+    width: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.4)
+    );
+    text-align: left;
+
+    &__readWrite {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+}
+
+.ratingCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: rgba(33, 33, 33, 0.5);
+  border-radius: 10px;
+  padding: 1.8rem 0;
+  height: 15rem;
+
+  &-avg {
+    font-weight: 600;
+    color: var(--stars-color);
+  }
+  &-stars {
+    transform: scale(1.5);
+    & .MuiRating-iconEmpty {
+      color: rgb(70, 70, 70);
+    }
+  }
+}
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  &__empty {
+    padding: 2rem 0;
+  }
+}
+
+.reviewForm {
+  &__flex {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    textarea {
+      height: 4rem;
+      padding: 1rem;
+
+      color: var(--primary-color);
+      font-family: var(--font-family-basic);
+      font-size: 1.1rem;
+
+      border-radius: 5px;
+      background-color: transparent;
+      outline: 1.5px solid var(--primary-color);
+      border: 0;
+      &:focus {
+        transform: scale(1.03);
+      }
+    }
+
+    &-rating {
+      .MuiRating-iconEmpty {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    &-error {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      margin: 0;
+    }
+
+    button {
+      cursor: pointer;
+      height: 2.2rem;
+      background-color: var(--primary-color);
+      border-radius: 5px;
+      outline: 0;
+      border: 0;
+
+      font-family: var(--font-family-basic);
+      color: var(--secondary-color);
+      font-weight: 600;
+      font-size: 1.1rem;
+
+      &:hover {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+//Reviews
+.reviewCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  background-color: rgba(33, 33, 33, 0.5);
+  border-radius: 7px;
+  padding: 1rem 2rem;
+  height: 15rem;
+
+  text-shadow: none;
+  font-weight: 500;
+  color: var(--primary-color);
+
+  &__item {
+    color: var(--primary-color);
+    margin-left: auto;
+    font-size: 50px;
+  }
+
+  &__text {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+  }
+
+  &__rating {
+    &-stars {
+      transform: translate(-16px) scale(0.75);
+      & .MuiRating-iconEmpty {
+        color: rgb(70, 70, 70);
+      }
+    }
+  }
+
+  &__date {
+    color: rgb(151, 151, 151);
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .reviewsList__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 1000px) {
   .body__products {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (max-width: 810px) {
   .body__products {
     grid-template-columns: repeat(2, 1fr);
   }
+  .productPage__reviews__readWrite {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
+
 @media (max-width: 580px) {
   .body__products {
-    grid-template-columns: 0.9fr;
+    grid-template-columns: 1fr;
+  }
+  .reviewsList__grid {
+    grid-template-columns: 1fr;
+  }
+  .reviewCard {
+    height: 10rem;
   }
 }

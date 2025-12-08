@@ -1,21 +1,22 @@
 import Rating from '@mui/material/Rating';
+import { useNavigate } from 'react-router-dom';
 import type { Product } from '../types/Product';
+import { calculateAverageRating } from '../utils/calculateAverageRating';
 
 interface Props {
   product: Product;
 }
 
 export default function ProductCard({ product }: Props) {
-  function calculateAverageRating() {
-    if (!product.reviews.length) return 0;
-    return (
-      product.reviews.reduce((sum, review) => sum + review.rating, 0) /
-      product.reviews.length
-    );
+  const navigate = useNavigate();
+  function handleRedirect() {
+    navigate(`/product/${product.id}`, {
+      state: { imgCode: product.image.slice(-3) },
+    });
   }
-
   return (
     <article
+      onClick={handleRedirect}
       className="product"
       style={{
         backgroundImage: `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)),
@@ -28,24 +29,21 @@ export default function ProductCard({ product }: Props) {
             <>
               <Rating
                 className="product__details-rating"
-                name="size-small"
-                value={calculateAverageRating()}
+                value={calculateAverageRating(product.reviews)}
+                precision={0.1}
                 readOnly
               />
               <span className="product__details-reviewInfo">
-                <span>{calculateAverageRating().toFixed(1)} of 5</span> (
-                {product.reviews.length}{' '}
+                <span>
+                  {calculateAverageRating(product.reviews).toFixed(1)} of 5
+                </span>{' '}
+                ({product.reviews.length}{' '}
                 {product.reviews.length === 1 ? 'review' : 'reviews'})
               </span>
             </>
           ) : (
             <>
-              <Rating
-                className="product__details-rating"
-                name="size-small"
-                value={0}
-                readOnly
-              />
+              <Rating className="product__details-rating" value={0} readOnly />
               <span className="product__details-reviewInfo">(no reviews)</span>
             </>
           )}
