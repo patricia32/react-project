@@ -62,17 +62,17 @@ export default function ReviewForm({ productId, onReviewSubmit }: Props) {
     }
   }
   return (
-    <div className="ReviewForm">
+    <div className="reviewForm">
       Write your thoughts
-      <form onSubmit={handleSubmit} className="ReviewForm__flex">
+      <form onSubmit={handleSubmit} className="reviewForm__flex">
         <Rating
           onChange={handleChangeRating}
-          className="ReviewForm__flex-rating"
+          className="reviewForm__flex-rating"
           value={reviewData.ratingValue}
         />
         {(reviewData.ratingValue === 0 || reviewData.ratingValue === null) &&
           error && (
-            <p className="ReviewForm__flex-error">Please select a rating.</p>
+            <p className="reviewForm__flex-error">Please select a rating.</p>
           )}
         <textarea
           placeholder="Write something"
@@ -80,7 +80,7 @@ export default function ReviewForm({ productId, onReviewSubmit }: Props) {
           value={reviewData.textReview}
         ></textarea>
         {reviewData.textReview === '' && error && (
-          <p className="ReviewForm__flex-error">Please write something.</p>
+          <p className="reviewForm__flex-error">Please write something.</p>
         )}
         <button type="submit">Submit</button>
       </form>

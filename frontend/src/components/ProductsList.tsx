@@ -17,15 +17,7 @@ export default function ProductsList({ searchInput }: Props) {
   useEffect(() => {
     getProducts()
       .then((fetchedProducts) => {
-        fetchedProducts.forEach((product) => {
-          product.image =
-            product.image.slice(0, -3) +
-            (Math.floor(Math.random() * 900) + 100);
-          product.reviews.forEach((review) => {
-            review.createdAt = new Date(review.createdAt);
-          });
-          setProducts(fetchedProducts);
-        });
+        setProducts(fetchedProducts);
       })
       .catch((error) => {
         console.error('Failed to fetch products:', error);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 import { getProductDetails } from '../api/products';
 import type { Product } from '../types/Product';
@@ -9,20 +9,17 @@ import ReviewForm from '../components/ReviewForm';
 import type { Review } from '../types/Review';
 
 export default function ProductPage() {
-  const { productId, imgCode } = useParams();
+  const { productId } = useParams<{ productId: string }>();
+  const { state } = useLocation();
+  const imgCode = state?.imgCode;
   const [product, setProduct] = useState<Product>({} as Product);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (productId)
-      getProductDetails(productId)
+      getProductDetails(productId, imgCode!)
         .then((productData) => {
-          productData.image = productData.image.slice(0, -3) + imgCode;
-          productData.reviews.forEach((review) => {
-            review.createdAt = new Date(review.createdAt);
-          });
-
           setProduct(productData);
           setReviews(productData.reviews || []);
         })

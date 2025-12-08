@@ -6,21 +6,37 @@ export async function getProducts(): Promise<Product[]> {
     if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
 
     const data: Product[] = await res.json();
+    data.map((product) => {
+      (product.image =
+        product.image.slice(0, -3) + (Math.floor(Math.random() * 900) + 100)),
+        product.reviews.forEach((review) => {
+          review.createdAt = new Date(review.createdAt);
+        });
+    });
     return data as Product[];
   } catch (err) {
     throw new Error('Error');
   }
 }
 
-export async function getProductDetails(productId: string): Promise<Product> {
+export async function getProductDetails(
+  productId: string,
+  imgCode: string,
+): Promise<Product> {
   try {
     const res = await fetch(`http://localhost:8055/products/${productId}`);
     if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
 
     const data: Product[] = await res.json();
+    data.map((product) => {
+      product.image = product.image.slice(0, -3) + imgCode;
+
+      product.reviews.forEach((review) => {
+        review.createdAt = new Date(review.createdAt);
+      });
+    });
     data[0].reviews.sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+      (a, b) => b.createdAt.getTime() - a.createdAt.getTime(),
     );
     return data[0] as Product;
   } catch (err) {

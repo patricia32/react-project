@@ -9,9 +9,10 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
   const navigate = useNavigate();
-
   function handleRedirect() {
-    navigate(`/product/${product.id}/${product.image.slice(-3)}`);
+    navigate(`/product/${product.id}`, {
+      state: { imgCode: product.image.slice(-3) },
+    });
   }
   return (
     <article
