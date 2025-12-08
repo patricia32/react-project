@@ -30,6 +30,7 @@ export default function ProductCard({ product }: Props) {
               <Rating
                 className="product__details-rating"
                 value={calculateAverageRating(product.reviews)}
+                precision={0.1}
                 readOnly
               />
               <span className="product__details-reviewInfo">
