@@ -16,7 +16,9 @@ export default function RatingCard({ reviewsNo, avg }: Props) {
             className="ratingCard-stars"
             precision={0.5}
           />
-          <div>{reviewsNo} Ratings</div>
+          <div>
+            {reviewsNo} Rating{reviewsNo === 1 ? '' : 's'}
+          </div>
         </>
       ) : (
         <>No reviews yet</>
