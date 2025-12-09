@@ -106,12 +106,12 @@ body::before {
 
     &-name {
       font-family: var(--font-family-title);
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       text-align: left;
     }
 
     &-reviews {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -441,5 +441,16 @@ body::before {
   }
   .reviewCard {
     height: 10rem;
+  }
+  .container {
+    padding-top: 5rem;
+  }
+  .search {
+    height: 3em;
+    width: 19.5rem;
+    top: 1rem;
+    .SearchIcon {
+      font-size: 2.5rem;
+    }
   }
 }

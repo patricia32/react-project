@@ -7,12 +7,12 @@ interface Props {
 }
 
 export default function SearchBar({ searchInput, handleChange }: Props) {
-  const [showFirst, setShowFirst] = useState(true);
+  const [showLargeSearchBar, setShowLargeSearchBar] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) setShowFirst(false);
-      else setShowFirst(true);
+      if (window.scrollY > 50) setShowLargeSearchBar(false);
+      else setShowLargeSearchBar(true);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -26,14 +26,14 @@ export default function SearchBar({ searchInput, handleChange }: Props) {
     });
   }
   return (
-    <div className={showFirst ? 'search' : 'searchUp'}>
+    <div className={showLargeSearchBar ? 'search' : 'searchUp'}>
       <button
-        className={showFirst ? 'search__button' : 'searchUp__button'}
+        className={showLargeSearchBar ? 'search__button' : 'searchUp__button'}
         onClick={handleClick}
       >
         <SearchIcon className="SearchIcon" />
       </button>
-      {showFirst && (
+      {showLargeSearchBar && (
         <input
           type="text"
           value={searchInput}
