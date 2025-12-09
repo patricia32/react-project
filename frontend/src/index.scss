@@ -143,6 +143,7 @@ body::before {
   overflow-wrap: break-word;
   word-break: break-word;
 }
+
 // Search
 .search {
   position: fixed;
@@ -159,7 +160,7 @@ body::before {
   background-color: var(--black-color--background);
   overflow: hidden;
 
-  &-button {
+  &__button {
     height: 100%;
     border: none;
     background: var(--primary-color);
@@ -167,7 +168,6 @@ body::before {
     justify-content: center;
     align-items: center;
     border-radius: 0 50px 50px 0;
-    cursor: pointer;
 
     .SearchIcon {
       font-size: 3.5rem;
@@ -189,6 +189,28 @@ body::before {
 
     &::placeholder {
       color: var(--primary-color);
+    }
+  }
+}
+
+//Search up
+.searchUp {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+
+  &__button {
+    border: none;
+    background: var(--primary-color);
+    margin: 0 auto;
+    border-radius: 0 0 50px 50px;
+    cursor: pointer;
+
+    .SearchIcon {
+      font-size: 3.5rem;
+      color: black;
     }
   }
 }
@@ -270,6 +292,7 @@ body::before {
     }
   }
 }
+
 .reviewsList {
   display: flex;
   flex-direction: column;
@@ -287,7 +310,7 @@ body::before {
 
 .reviewForm {
   &__flex {
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;

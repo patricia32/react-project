@@ -75,6 +75,7 @@ export default function ReviewForm({ productId, onReviewSubmit }: Props) {
             <p className="reviewForm__flex-error">Please select a rating.</p>
           )}
         <textarea
+          name="textReview"
           placeholder="Write something"
           onChange={handleChangeText}
           value={reviewData.textReview}
