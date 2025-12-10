@@ -1,5 +1,5 @@
 import type { Product } from '../types/Product';
-
+import { hashFunction } from '../utils/hashFunction';
 export async function getProducts(): Promise<Product[]> {
   try {
     const res = await fetch('http://localhost:8055/products');
@@ -7,8 +7,7 @@ export async function getProducts(): Promise<Product[]> {
 
     const data: Product[] = await res.json();
     data.map((product) => {
-      (product.image =
-        product.image.slice(0, -3) + (Math.floor(Math.random() * 900) + 100)),
+      (product.image = product.image.slice(0, -3) + hashFunction(product.id)),
         product.reviews.forEach((review) => {
           review.createdAt = new Date(review.createdAt);
         });
@@ -19,17 +18,14 @@ export async function getProducts(): Promise<Product[]> {
   }
 }
 
-export async function getProductDetails(
-  productId: string,
-  imgCode: string,
-): Promise<Product> {
+export async function getProductDetails(productId: string): Promise<Product> {
   try {
     const res = await fetch(`http://localhost:8055/products/${productId}`);
     if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
 
     const data: Product[] = await res.json();
     data.map((product) => {
-      product.image = product.image.slice(0, -3) + imgCode;
+      product.image = product.image.slice(0, -3) + hashFunction(productId);
 
       product.reviews.forEach((review) => {
         review.createdAt = new Date(review.createdAt);

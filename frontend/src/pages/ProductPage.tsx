@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { getProductDetails } from '../api/products';
 import type { Product } from '../types/Product';
@@ -10,15 +10,13 @@ import type { Review } from '../types/Review';
 
 export default function ProductPage() {
   const { productId } = useParams<{ productId: string }>();
-  const { state } = useLocation();
-  const imgCode = state?.imgCode;
   const [product, setProduct] = useState<Product>({} as Product);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (productId)
-      getProductDetails(productId, imgCode!)
+      getProductDetails(productId)
         .then((productData) => {
           setProduct(productData);
           setReviews(productData.reviews || []);

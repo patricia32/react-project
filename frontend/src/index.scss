@@ -29,7 +29,6 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 body::before {
@@ -309,6 +308,9 @@ body::before {
 }
 
 .reviewForm {
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
   &__flex {
     padding: 1rem 0;
     display: flex;
@@ -398,12 +400,13 @@ body::before {
     word-break: break-word;
 
     &-text {
-      display: -webkit-box;
+      display: -webkit-box; // This creates a flexible box layout using an old WebKit-specific model.
       -webkit-line-clamp: 6;
-      -webkit-box-orient: vertical;
+      -webkit-box-orient: vertical; // This forces the box to be vertically oriented, meaning text flows top to bottom.
+      // ------------------------------Without this, the line clamp won’t work
       overflow: hidden;
     }
-    .expandedText {
+    .textExpanded {
       -webkit-line-clamp: unset;
     }
     &-seeMore {
@@ -454,6 +457,10 @@ body::before {
     grid-template-columns: 1fr;
     display: flex;
     flex-direction: column-reverse;
+  }
+  .reviewForm {
+    top: 0;
+    position: relative;
   }
 }
 

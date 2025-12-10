@@ -20,24 +20,12 @@ export default function ReviewCard({ review }: Props) {
       <FormatQuoteIcon className="reviewCard__item " fontSize="large" />
       <div className="reviewCard__wrapper">
         <div
-          className={
-            expanded
-              ? 'reviewCard__wrapper-expandedText'
-              : 'reviewCard__wrapper-text'
-          }
+          className={`reviewCard__wrapper-text${expanded ? 'Expanded' : ''}`}
         >
           {review.text}
         </div>
-        <div className="reviewCard__wrapper-seeMore">
-          {longReview ? (
-            expanded ? (
-              <div onClick={toggleSeeMore}>See less</div>
-            ) : (
-              <div onClick={toggleSeeMore}>See more</div>
-            )
-          ) : (
-            ''
-          )}
+        <div className="reviewCard__wrapper-seeMore" onClick={toggleSeeMore}>
+          {longReview ? <div>{expanded ? 'See less' : 'See more'}</div> : ''}
         </div>
       </div>
       <div className="reviewCard__rating">
