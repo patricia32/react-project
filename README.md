@@ -47,6 +47,15 @@ Clone the repository, you can find backend code [here](https://github.com/tonymi
 The code is automatically formatted on save if Prettier is configured in VS Code. ESLint can be run manually using `npm run lint`. The project is set up with TypeScript strict mode and ESLint rules to catch common mistakes and enforce best practices.
 
 ---
+<table>
+  <tr>
+    <td>
+      <img alt="Landing Page" width="500" src="https://github.com/user-attachments/assets/a3e2c792-ec5c-42db-bf14-5494612f4370" />
+    </td>
+    <td>
+    <img alt="Products Page" width="500" src="https://github.com/user-attachments/assets/309828eb-193f-4ce5-9d3c-9d00d73523fa" />
+    </td>
+  </tr>
+</table>
 
-<img src="![dc51395e-6a09-4a77-a521-be1faa2134b1](https://github.com/user-attachments/assets/a19756dc-9b86-4597-98ca-be071c52962f)" alt="Landing Page" width="800"/>
-<img src="![571d1f76-aba3-4627-9654-935e64d03eb3](https://github.com/user-attachments/assets/ad7f1482-878b-47a1-b702-e8a23a3f3374)" alt="Products Page" width="800"/>
+
