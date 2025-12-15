@@ -1,8 +1,11 @@
 import type { Product } from '../types/Product';
 import { hashFunction } from '../utils/hashFunction';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 export async function getProducts(): Promise<Product[]> {
   try {
-    const res = await fetch('http://localhost:8055/products');
+    const res = await fetch(`${BASE_URL}/products`);
     if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
 
     const data: Product[] = await res.json();
@@ -20,7 +23,7 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function getProductDetails(productId: string): Promise<Product> {
   try {
-    const res = await fetch(`http://localhost:8055/products/${productId}`);
+    const res = await fetch(`${BASE_URL}/products/${productId}`);
     if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
 
     const data: Product[] = await res.json();
@@ -47,16 +50,13 @@ export async function submitReview(
   rating: number,
 ) {
   try {
-    const res = await fetch(
-      `http://localhost:8055/products/${productId}/reviews`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text, rating }),
+    const res = await fetch(`${BASE_URL}/products/${productId}/reviews`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    );
+      body: JSON.stringify({ text, rating }),
+    });
 
     if (!res.ok) {
       const errorData = await res.json();

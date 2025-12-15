@@ -3,18 +3,22 @@ import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import dateFormat from '../utils/dateFormat';
 import Rating from '@mui/material/Rating';
 import { useEffect, useState } from 'react';
+
 interface Props {
   review: Review;
 }
 export default function ReviewCard({ review }: Props) {
   const [longReview, setLongReview] = useState(true);
   const [expanded, setExpanded] = useState(false);
+
   useEffect(() => {
     if (review.text.length < 65) setLongReview(false);
-  }, [review]);
+  }, []);
+
   function toggleSeeMore() {
     setExpanded(!expanded);
   }
+
   return (
     <div className={`reviewCard ${expanded ? 'expandedCard' : ''}`}>
       <FormatQuoteIcon className="reviewCard__item " fontSize="large" />

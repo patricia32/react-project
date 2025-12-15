@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 interface Props {
   searchInput: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (e: string) => void;
 }
 
 export default function SearchBar({ searchInput, handleChange }: Props) {
@@ -37,7 +37,9 @@ export default function SearchBar({ searchInput, handleChange }: Props) {
         <input
           type="text"
           value={searchInput}
-          onChange={handleChange}
+          onChange={(event) => {
+            handleChange(event.target.value);
+          }}
           className="search-input"
           placeholder="What are you looking for?"
         />

@@ -5,30 +5,35 @@ import type { Review } from '../types/Review';
 
 interface Props {
   productId: string | undefined;
+  setError: (error: boolean) => void;
   onReviewSubmit: (newReview: Review) => void;
 }
-export default function ReviewForm({ productId, onReviewSubmit }: Props) {
-  const [error, setError] = useState<string>('');
+export default function ReviewForm({
+  productId,
+  setError,
+  onReviewSubmit,
+}: Props) {
+  const [fieldsError, setFieldsError] = useState<string>('');
   const [reviewData, setReviewData] = useState({
     ratingValue: 0,
     textReview: '',
   });
 
   function handleChangeRating(
-    event: React.SyntheticEvent<Element, Event>,
+    _: React.SyntheticEvent<Element, Event>,
     newValue: number | null,
   ) {
     setReviewData((prev) => ({
       ...prev,
       ratingValue: newValue!,
     }));
-    setError('');
+    setFieldsError('');
   }
 
-  function handleChangeText(event: React.ChangeEvent<HTMLTextAreaElement>) {
+  function handleChangeText(textInput: string) {
     setReviewData((prev) => ({
       ...prev,
-      textReview: event.target.value,
+      textReview: textInput,
     }));
   }
 
@@ -36,11 +41,11 @@ export default function ReviewForm({ productId, onReviewSubmit }: Props) {
     e.preventDefault();
 
     if (!reviewData.textReview) {
-      setError('Please write something.');
+      setFieldsError('Please write something.');
       return;
     }
     if (!reviewData.ratingValue) {
-      setError('Please select a rating.');
+      setFieldsError('Please select a rating.');
       return;
     }
     try {
@@ -56,11 +61,14 @@ export default function ReviewForm({ productId, onReviewSubmit }: Props) {
       }
 
       setReviewData({ ratingValue: 0, textReview: '' });
-      setError('');
+      setFieldsError('');
     } catch (err: any) {
-      setError(err.message || 'Something went wrong');
+      console.log('ew');
+      setFieldsError(err.message || 'Something went wrong');
+      setError(true);
     }
   }
+
   return (
     <div className="reviewForm">
       Write your thoughts
@@ -71,16 +79,18 @@ export default function ReviewForm({ productId, onReviewSubmit }: Props) {
           value={reviewData.ratingValue}
         />
         {(reviewData.ratingValue === 0 || reviewData.ratingValue === null) &&
-          error && (
+          fieldsError && (
             <p className="reviewForm__flex-error">Please select a rating.</p>
           )}
         <textarea
           name="textReview"
           placeholder="Write something"
-          onChange={handleChangeText}
+          onChange={(event) => {
+            handleChangeText(event.target.value);
+          }}
           value={reviewData.textReview}
         ></textarea>
-        {reviewData.textReview === '' && error && (
+        {reviewData.textReview === '' && fieldsError && (
           <p className="reviewForm__flex-error">Please write something.</p>
         )}
         <button type="submit">Submit</button>

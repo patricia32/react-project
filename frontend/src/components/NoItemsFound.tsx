@@ -4,8 +4,12 @@ interface Props {
 
 export default function NoItemsFound({ searchInput }: Props) {
   return (
-    <div className="nothingFound">
-      No results for <strong>{searchInput}</strong>
+    <div className="container">
+      <div className="body">
+        <div className="nothingFound">
+          No results for <strong>{searchInput}</strong>
+        </div>
+      </div>
     </div>
   );
 }

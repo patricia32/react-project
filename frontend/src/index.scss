@@ -26,7 +26,6 @@ body {
   text-shadow: var(--text-shadow);
   color: var(--primary-color);
   margin: 0;
-  display: flex;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -44,7 +43,6 @@ body::before {
 
 // Main
 .main {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,7 +58,6 @@ body::before {
   align-items: center;
 
   padding-top: 8rem;
-  margin: 0 2rem;
   width: 75vw;
 }
 
@@ -83,7 +80,13 @@ body::before {
   align-items: center;
   gap: 1.5rem;
 }
-
+.CircularProgress {
+  width: 5rem !important;
+  height: 5rem !important;
+  color: gray !important;
+  align-self: center;
+  margin: auto 0;
+}
 .product {
   height: 25rem;
   background-size: cover;
