@@ -2,27 +2,52 @@ import Rating from '@mui/material/Rating';
 import { useNavigate } from 'react-router-dom';
 import type { Product } from '../types/Product';
 import { calculateAverageRating } from '../utils/calculateAverageRating';
+import { useEffect, useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 interface Props {
   product: Product;
 }
 
 export default function ProductCard({ product }: Props) {
+  const [isImageLoading, setIsImageLoading] = useState(true);
+
+  useEffect(() => {
+    if (!product?.image) return;
+
+    setIsImageLoading(true);
+
+    const img = new Image();
+    img.src = product.image;
+
+    img.onload = () => {
+      setIsImageLoading(false);
+    };
+
+    img.onerror = () => {
+      setIsImageLoading(false);
+    };
+  }, [product.image]);
+
+  const backgroundImage = isImageLoading
+    ? 'linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0))' // skeleton
+    : `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url(${product.image})`;
+
   const navigate = useNavigate();
   function handleRedirect() {
-    navigate(`/product/${product.id}`, {
-      state: { imgCode: product.image.slice(-3) },
-    });
+    navigate(`/product/${product.id}`);
   }
   return (
     <article
       onClick={handleRedirect}
       className="product"
       style={{
-        backgroundImage: `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)),
-                                 url(${product.image})`,
+        backgroundImage: backgroundImage,
       }}
     >
+      {isImageLoading && (
+        <CircularProgress className="CircularProgress" color="inherit" />
+      )}
       <div className="product__details">
         <div className="product__details-reviews">
           {product.reviews.length ? (

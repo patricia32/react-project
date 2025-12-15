@@ -17,7 +17,7 @@ export default function ReviewsList({ reviews }: Props) {
       {reviews.length > 0 && (
         <div className="reviewsList__grid">
           {reviews.map((review) => (
-            <ReviewCard key={review.id} review={review}></ReviewCard>
+            <ReviewCard key={review.id} review={review} />
           ))}
         </div>
       )}
