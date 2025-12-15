@@ -16,7 +16,18 @@ This is a responsive web application built with **React**, **TypeScript**, and *
   - Circular progress/loading indicators
   - Buttons and inputs
 
----
+<table>
+  <tr>
+    <td>
+      <img alt="Landing Page" width="500" src="https://github.com/user-attachments/assets/a3e2c792-ec5c-42db-bf14-5494612f4370" />
+    </td>
+    <td>
+    <img alt="Products Page" width="500" src="https://github.com/user-attachments/assets/309828eb-193f-4ce5-9d3c-9d00d73523fa" />
+    </td>
+  </tr>
+</table>
+
+--- 
 
 ## Features
 - Dynamic, animated search bar on the landing page
@@ -47,15 +58,6 @@ Clone the repository, you can find backend code [here](https://github.com/tonymi
 The code is automatically formatted on save if Prettier is configured in VS Code. ESLint can be run manually using `npm run lint`. The project is set up with TypeScript strict mode and ESLint rules to catch common mistakes and enforce best practices.
 
 ---
-<table>
-  <tr>
-    <td>
-      <img alt="Landing Page" width="500" src="https://github.com/user-attachments/assets/a3e2c792-ec5c-42db-bf14-5494612f4370" />
-    </td>
-    <td>
-    <img alt="Products Page" width="500" src="https://github.com/user-attachments/assets/309828eb-193f-4ce5-9d3c-9d00d73523fa" />
-    </td>
-  </tr>
-</table>
+
 
 
