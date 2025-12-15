@@ -1,12 +1,40 @@
-# React Frontend Project
+# My React E-Commerce Showcase
 
 ## Description
-This is a frontend project built with React and TypeScript. It displays a list of products with images and reviews. The project uses ESLint, Prettier, and TypeScript in strict mode to ensure safe and consistent coding practices. The application is designed to be maintainable, following best practices for React development.
+This is a responsive web application built with **React**, **TypeScript**, and **CSS**, featuring a modern product showcase. The project includes:
+
+- A **landing page** with a dynamic search bar that changes position and style on scroll.
+- A **products page** displaying:
+  - Product title, details, and reviews
+  - A form for submitting reviews
+- **Dynamic search functionality**:
+  - Search by product title or description
+  - Real-time filtering as you type
+- **Responsive design** for multiple screen sizes using Flexbox and Grid
+- UI elements from **Material-UI**, including:
+  - Rating components
+  - Circular progress/loading indicators
+  - Buttons and inputs
+
+---
+
+## Features
+- Dynamic, animated search bar on the landing page
+- Product details page with reviews and review submission
+- Real-time search filtering
+- Responsive layout for mobile, tablet, and desktop
+- Smooth loading animations and skeletons for images
+- Interactive Material-UI components
 
 ---
 
 ## Technologies Used
-React 18+, TypeScript, ESLint, Prettier, Material-UI (Rating component), Vite (or Create React App, depending on setup), and a mock API for products.
+- **React** (functional components, hooks)
+- **TypeScript** (type safety and better scalability)
+- **CSS / Flexbox / Grid** for layout and responsiveness
+- **Material-UI** for:
+  - Ratings
+  - CircularProgress
 
 ---
 
